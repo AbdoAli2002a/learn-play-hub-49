@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExteriorAngleRouteImport } from './routes/exterior-angle'
+import { Route as InteriorAnglesRouteImport } from './routes/interior-angles'
+import { Route as TriangleInequalityRouteImport } from './routes/triangle-inequality'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExteriorAngleRoute = ExteriorAngleRouteImport.update({
+  id: '/exterior-angle',
+  path: '/exterior-angle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InteriorAnglesRoute = InteriorAnglesRouteImport.update({
+  id: '/interior-angles',
+  path: '/interior-angles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TriangleInequalityRoute = TriangleInequalityRouteImport.update({
+  id: '/triangle-inequality',
+  path: '/triangle-inequality',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exterior-angle': typeof ExteriorAngleRoute
+  '/interior-angles': typeof InteriorAnglesRoute
+  '/triangle-inequality': typeof TriangleInequalityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exterior-angle': typeof ExteriorAngleRoute
+  '/interior-angles': typeof InteriorAnglesRoute
+  '/triangle-inequality': typeof TriangleInequalityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exterior-angle': typeof ExteriorAngleRoute
+  '/interior-angles': typeof InteriorAnglesRoute
+  '/triangle-inequality': typeof TriangleInequalityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/exterior-angle' | '/interior-angles' | '/triangle-inequality'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/exterior-angle' | '/interior-angles' | '/triangle-inequality'
+  id:
+    | '__root__'
+    | '/'
+    | '/exterior-angle'
+    | '/interior-angles'
+    | '/triangle-inequality'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExteriorAngleRoute: typeof ExteriorAngleRoute
+  InteriorAnglesRoute: typeof InteriorAnglesRoute
+  TriangleInequalityRoute: typeof TriangleInequalityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exterior-angle': {
+      id: '/exterior-angle'
+      path: '/exterior-angle'
+      fullPath: '/exterior-angle'
+      preLoaderRoute: typeof ExteriorAngleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interior-angles': {
+      id: '/interior-angles'
+      path: '/interior-angles'
+      fullPath: '/interior-angles'
+      preLoaderRoute: typeof InteriorAnglesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/triangle-inequality': {
+      id: '/triangle-inequality'
+      path: '/triangle-inequality'
+      fullPath: '/triangle-inequality'
+      preLoaderRoute: typeof TriangleInequalityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExteriorAngleRoute: ExteriorAngleRoute,
+  InteriorAnglesRoute: InteriorAnglesRoute,
+  TriangleInequalityRoute: TriangleInequalityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
