@@ -17,7 +17,7 @@ export function TriangleBuilder() {
   const valid = a + b > c && a + c > b && b + c > a;
   const geom = useMemo(() => (valid ? points(a, b, c) : null), [a, b, c, valid]);
 
-  const sorted = [a, b, c].sort((m, n) => m - n);
+  const [s1, s2, s3] = [a, b, c].sort((m, n) => m - n) as [number, number, number];
   const scale = 240 / Math.max(a, b, c, 1);
 
   return (
@@ -52,9 +52,9 @@ export function TriangleBuilder() {
             className={`rounded-md border p-4 text-sm ${valid ? "border-success/50 bg-success/10 text-success" : "border-destructive/50 bg-destructive/10 text-destructive"}`}
           >
             <span className="math">
-              {sorted[0]} + {sorted[1]} = {sorted[0] + sorted[1]} {valid ? ">" : sorted[0] + sorted[1] === sorted[2] ? "=" : "<"}{" "}
-              {sorted[2]}
+              {s1} + {s2} = {s1 + s2} {valid ? ">" : s1 + s2 === s3 ? "=" : "<"} {s3}
             </span>
+
             <p className="mt-1">
               {valid
                 ? "The two shorter sides reach past the longest side, so the triangle closes."
