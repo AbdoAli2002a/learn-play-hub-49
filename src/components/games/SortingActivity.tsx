@@ -12,17 +12,27 @@ const sets: [number, number, number][] = [
   [11, 4, 6],
 ];
 
-function possible([a, b, c]: [number, number, number]) {
-  const s = [a, b, c].sort((m, n) => m - n);
-  return s[0] + s[1] > s[2];
+function sortAsc(t: [number, number, number]): [number, number, number] {
+  const [x, y, z] = [...t].sort((m, n) => m - n) as [number, number, number];
+  return [x, y, z];
+}
+
+function possible(t: [number, number, number]) {
+  const [x, y, z] = sortAsc(t);
+  return x + y > z;
 }
 
 export function SortingActivity() {
   const [answers, setAnswers] = useState<Record<number, boolean>>({});
   const correct = useMemo(
-    () => Object.entries(answers).filter(([i, v]) => possible(sets[Number(i)]) === v).length,
+    () =>
+      Object.entries(answers).filter(([i, v]) => {
+        const set = sets[Number(i)];
+        return set ? possible(set) === v : false;
+      }).length,
     [answers],
   );
+
 
   return (
     <GameShell
