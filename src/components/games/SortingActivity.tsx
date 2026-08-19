@@ -70,10 +70,10 @@ export function SortingActivity() {
               </div>
               {answered ? (
                 <span className={`math text-xs ${right ? "text-success" : "text-destructive"}`}>
-                  {[...s].sort((m, n) => m - n)[0] + [...s].sort((m, n) => m - n)[1]} vs{" "}
-                  {[...s].sort((m, n) => m - n)[2]}
+                  {sortAsc(s)[0] + sortAsc(s)[1]} vs {sortAsc(s)[2]}
                 </span>
               ) : null}
+
             </div>
           );
         })}
