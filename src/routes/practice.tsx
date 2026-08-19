@@ -42,8 +42,9 @@ const questions: Q[] = [
   },
   {
     tag: "Understand",
-    q: "A triangle has angles (2x + 16)°, (x + 1)° and 80°. Find x.",
-    a: "(2x + 16) + (x + 1) + 80 = 180 → 3x + 97 = 180 → 3x = 83… check: x = 27⅔. With 80° replaced correctly the standard answer is 3x + 17 = 100 → x = 27.67°; verify the figure's labels before solving.",
+    q: "A triangle has angles (2x + 16)°, (x + 1)° and 82°. Find x.",
+    a: "(2x + 16) + (x + 1) + 82 = 180 → 3x + 99 = 180 → 3x = 81 → x = 27. Angles: 70°, 28°, 82°.",
+
   },
   {
     tag: "Understand",
@@ -72,8 +73,9 @@ const questions: Q[] = [
   },
   {
     tag: "Understand",
-    q: "In the figure, ED ∥ CB, m(∠D) = 100°, m(∠C) = 30° and A ∈ BD. Find m(∠BAC).",
-    a: "∠ABC = ∠D = 100°? No — using alternate angles m(∠ABC) = 100° is the co-interior partner; in △ABC, m(∠BAC) = 180 − (100 + 30) = 50°.",
+    q: "In the figure, ED ∥ CB with m(∠D) = 100°, m(∠C) = 30° and A ∈ BD. Find m(∠BAC).",
+    a: "∵ ED ∥ CB and BD is a transversal → m(∠ABC) = m(∠D) = 100° (alternate angles). In △ABC: m(∠BAC) = 180° − (100° + 30°) = 50°.",
+
   },
   {
     tag: "Problem Solving",
